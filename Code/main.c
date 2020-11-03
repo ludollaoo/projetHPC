@@ -17,12 +17,12 @@
 
 	uint8 pixel_courant, pixel_precedent;
 	int diff;
-	uint8** image_precedente = LoadPGM_ui8matrix("/home/ludovic/HPC/Projet/car3/car_3000.pgm", &nrl, &nrh, &ncl, &nch);
-	uint8** image_courante = LoadPGM_ui8matrix("/home/ludovic/HPC/Projet/car3/car_3000.pgm", &nrl, &nrh, &ncl, &nch);
+	uint8** image_precedente = LoadPGM_ui8matrix("/home/jebali/Bureau/EISE5/ProjetHPC/projetHPC/car3/car_3000.pgm", &nrl, &nrh, &ncl, &nch);
+	uint8** image_courante = LoadPGM_ui8matrix("/home/jebali/Bureau/EISE5/ProjetHPC/projetHPC/car3/car_3000.pgm", &nrl, &nrh, &ncl, &nch);
 	uint8** difference = ui8matrix(nrl, nrh, ncl, nch);
 
 	for (img_nbr; img_nbr < 200; img_nbr++){
-		sprintf(nom_img, "/home/ludovic/HPC/Projet/car3/car_3%03d.pgm", img_nbr);
+		sprintf(nom_img, "/home/jebali/Bureau/EISE5/ProjetHPC/projetHPC/car3/car_3%03d.pgm", img_nbr);
 		image_courante = LoadPGM_ui8matrix( nom_img, &nrl, &nrh, &ncl, &nch);
 		difference = ui8matrix(nrl, nrh, ncl, nch);
 		
@@ -40,7 +40,7 @@
 			}
 		}
 
-		sprintf(nom_res, "/home/ludovic/HPC/Projet/Resultats/image_test3%03d", img_nbr);
+		sprintf(nom_res, "/home/jebali/Bureau/EISE5/ProjetHPC/projetHPC/Resultats/image_test3%03d", img_nbr);
 		SavePGM_ui8matrix(difference, nrl, nrh, ncl, nch, nom_res);
 		image_precedente = image_courante;
 	}
