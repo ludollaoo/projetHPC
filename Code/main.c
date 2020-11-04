@@ -63,19 +63,19 @@ int main(void){
 	//chemin des images
 	char path[100];
 
-	//////////////////////////////
-	//calcul de la """moyenne"""//
-	//////////////////////////////
-
 	//creation et chargement de l'image moyenne
-	uint8** moyenne = ui8matrix(nrl, nrh, ncl, nch);
+	uint8** image_moyenne = ui8matrix(nrl, nrh, ncl, nch);
 	get_path(0, path);
-	MLoadPGM_ui8matrix(path, nrl, nrh, ncl, nch, moyenne);
+	MLoadPGM_ui8matrix(path, nrl, nrh, ncl, nch, image_moyenne);
 	uint8 pixel_moyenne;
 
 	//creation de l'image courante
 	uint8** image_courante = ui8matrix(nrl, nrh, ncl, nch);
 	uint8 pixel_courant;
+
+	//creation de l'image difference
+	uint8** image_difference = ui8matrix(nrl, nrh, ncl, nch);
+	uint8 pixel_difference;
 
 	//parcours des 200 images
 	for(int n_img = 1; n_img < nb_img_max; n_img++){
@@ -87,22 +87,41 @@ int main(void){
 		//parcours de l'image courante et incrementation/decrementation de l'image moyenne
 		for(int i = nrl; i <= nrh; i++){
 			for(int j = ncl; j <= nch; j++){
-				pixel_moyenne = moyenne[i][j];
+				pixel_moyenne = image_moyenne[i][j];
 				pixel_courant = image_courante[i][j];
 				if(pixel_moyenne > pixel_courant){
-					moyenne[i][j] -= 1;
+					image_moyenne[i][j] -= 1;
 				}else if(pixel_moyenne < pixel_courant){
-					moyenne[i][j] += 1;
+					image_moyenne[i][j] += 1;
 				}
 			}
 		}
+
+		//visualisation de l'image moyenne
+		sprintf(path, "/home/ludovic/HPC/Projet/car3/car_3%03d_moyenne.pgm", n_img);
+		SavePGM_ui8matrix(image_moyenne, nrl, nrh, ncl, nch, path);
+
+		//difference entre la moyenne et l'image courante
+		for(int i = nrl; i <= nrh; i++){
+			for(int j = ncl; j <= nch; j++){
+				pixel_moyenne = image_moyenne[i][j];
+				pixel_courant = image_courante[i][j];
+				pixel_difference = abs(pixel_courant - pixel_moyenne);
+				image_difference[i][j] = pixel_difference;
+			}
+		}
+
+		//visualisation de l'image difference
+		sprintf(path, "/home/ludovic/HPC/Projet/car3/car_3%03d_difference.pgm", n_img);
+		SavePGM_ui8matrix(image_difference, nrl, nrh, ncl, nch, path);
+
+
 	}
 
-	//visualisation de la moyenne
-	//SavePGM_ui8matrix(moyenne, nrl, nrh, ncl, nch,"/home/ludovic/HPC/Projet/Code/image_test");
-
-	free_ui8matrix(moyenne, nrl, nrh, ncl, nch);
+	free_ui8matrix(image_moyenne, nrl, nrh, ncl, nch);
 	free_ui8matrix(image_courante, nrl, nrh, ncl, nch);
+	free_ui8matrix(image_difference, nrl, nrh, ncl, nch);
+
 }
 
 	// exemple de fonction pour ouverture et fermeture, attention au chemin
