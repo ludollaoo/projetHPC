@@ -144,7 +144,7 @@ uint8** ui8matrix(long nrl, long nrh, long ncl, long nch)
 {
   long i, nrow=nrh-nrl+1,ncol=nch-ncl+1;
   uint8 **m;
-
+  
   /* allocate pointers to rows */
   m=(uint8 **) malloc((size_t)((nrow+NR_END)*sizeof(uint8*)));
   if (!m) nrerror("allocation failure 1 in ui8matrix()");
