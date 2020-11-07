@@ -4,8 +4,15 @@
 #include "nrdef.h"
 #include "nrutil.h"
 
+#define max(a,b) (a>=b?a:b)
+#define min(a,b) (a<=b?a:b)
+
 #define threshold 10
 #define nb_img_max 200
+#define Vmin 1
+#define Vmax 254
+#define NOIR 0
+#define BLANC 255
 
 
  void frame_difference(){
@@ -77,6 +84,20 @@ int main(void){
 	uint8** image_difference = ui8matrix(nrl, nrh, ncl, nch);
 	uint8 pixel_difference;
 
+	//creation  de l'image ecrat_type
+	uint8** image_ecart_type = ui8matrix(nrl, nrh, ncl, nch);
+	for(int i = nrl; i <= nrh; i++){
+		for(int j = ncl; j <= nch; j++){
+			image_ecart_type[i][j] = Vmin;
+		}
+	}
+	uint8 pixel_ecart_type;
+	const int N = 4;
+
+	//creation de l'image binaire
+	uint8** image_binaire = ui8matrix(nrl, nrh, ncl, nch);
+	uint8 pixel_binaire;
+
 	//parcours des 200 images
 	for(int n_img = 1; n_img < nb_img_max; n_img++){
 
@@ -90,10 +111,11 @@ int main(void){
 				pixel_moyenne = image_moyenne[i][j];
 				pixel_courant = image_courante[i][j];
 				if(pixel_moyenne > pixel_courant){
-					image_moyenne[i][j] -= 1;
+					pixel_moyenne -= 1;
 				}else if(pixel_moyenne < pixel_courant){
-					image_moyenne[i][j] += 1;
+					pixel_moyenne += 1;
 				}
+				image_moyenne[i][j] = pixel_moyenne;
 			}
 		}
 
@@ -115,12 +137,48 @@ int main(void){
 		sprintf(path, "/home/ludovic/HPC/Projet/car3/car_3%03d_difference.pgm", n_img);
 		SavePGM_ui8matrix(image_difference, nrl, nrh, ncl, nch, path);
 
+		//ecart_type
+		for(int i = nrl; i <= nrh; i++){
+			for(int j = ncl; j <= nch; j++){
+				pixel_difference = image_difference[i][j];
+				pixel_ecart_type = image_ecart_type[i][j];
+				if(pixel_ecart_type < (N * pixel_difference)){
+					pixel_ecart_type += 1;
+				}else if(pixel_ecart_type > (N * pixel_difference)){
+					pixel_ecart_type -= 1;
+				}else{
+					pixel_ecart_type = max(min(pixel_ecart_type, Vmax), Vmin);
+				}
+				image_ecart_type[i][j] = pixel_ecart_type;
+			}
+		}
 
+		//visualition de l'ecart type
+		sprintf(path, "/home/ludovic/HPC/Projet/car3/car_3%03d_ecart_type.pgm", n_img);
+		SavePGM_ui8matrix(image_ecart_type, nrl, nrh, ncl, nch, path);
+
+		for(int i = nrl; i <= nrh; i++){
+			for(int j = ncl; j <= nch; j++){
+				pixel_ecart_type = image_ecart_type[i][j];
+				pixel_difference = image_difference[i][j];
+				if(pixel_difference < pixel_ecart_type){
+					pixel_binaire = NOIR;
+				}else{
+					pixel_binaire = BLANC;
+				}
+				image_binaire[i][j] = pixel_binaire;
+			}
+		}
+		//visualition de l'ecart type
+		sprintf(path, "/home/ludovic/HPC/Projet/car3/car_3%03d_binaire.pgm", n_img);
+		SavePGM_ui8matrix(image_binaire, nrl, nrh, ncl, nch, path);
 	}
 
 	free_ui8matrix(image_moyenne, nrl, nrh, ncl, nch);
 	free_ui8matrix(image_courante, nrl, nrh, ncl, nch);
 	free_ui8matrix(image_difference, nrl, nrh, ncl, nch);
+	free_ui8matrix(image_ecart_type, nrl, nrh, ncl, nch);
+	free_ui8matrix(image_binaire, nrl, nrh, ncl, nch);
 
 }
 
