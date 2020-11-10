@@ -2,6 +2,7 @@
 
 int main(void){
 
-	SD_sequentielle(0, 239, 0, 319, 200, 4, 1);
+	//SD_sequentielle(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3", 1);
+	test_SD_sequentielle();
 	
 }

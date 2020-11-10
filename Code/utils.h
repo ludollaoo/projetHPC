@@ -1,1 +1,1 @@
- void get_path(int numero_image, char * path, char* complement);
+ void get_path(int numero_image, char* path, char* nom, char* complement);
