@@ -1,0 +1,1 @@
+void SD_sequentielle(int nrl, int nrh, int ncl, int nch, int nb_image_max, int N, int sauvegarde);
