@@ -14,7 +14,7 @@ testcase : $(OBJ_TEST)
 	gcc -Wall  -o $@ $^
 
 $(EXEC): $(OBJ)
-	$(CC) $(LIBFLAGS) $^ -o $@  
+	$(CC) $(LIBFLAGS) $^ -o $@ -lm
 
 %.o: %.cc
 	$(CC) $(CCFLAGS) -o $@ -c $<
