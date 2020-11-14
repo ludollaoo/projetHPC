@@ -9,7 +9,7 @@
 #pragma message ("C++")
 extern "C" {
 #endif
-void dilatation_erosion_SIMD();
+void traitement3_SIMD();
 
 #ifdef __cplusplus
 }

@@ -61,9 +61,10 @@ void padding(){
 		SavePGM_ui8matrix(difference, nrl-2, nrh+2, ncl-2, nch+2, nom_res);
 		
 	}
-}
+}*/
 void copy_ui8matrix_ui8matrix_padding(uint8 **X, int i0, int i1, int j0, int j1, uint8 **Y)
-/* ----------------------------------------------------------------------------- 
+/* -----------------------------------------------------------------------------
+*/ 
 {
     int i, j;
 
@@ -168,13 +169,14 @@ void copy_ui8matrix_ui8matrix_padding(uint8 **X, int i0, int i1, int j0, int j1,
 		
 	}
  }
-int main(void){
-	frame_difference();
+
+void main_morpho(void){
+	//frame_difference();
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion	
 	//dilatation_erosion(1, 255);
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
 	ouverture_fermeture(1, 0);
-}*/
+}
 
 

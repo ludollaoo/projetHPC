@@ -18,6 +18,7 @@
 #define threshold 10
 
 // Decalage a gauche
+/*
 vuint8 _mm_left1(vuint8 vecteur0, vuint8 vecteur1)
 {
     vuint8 x0 = vecteur0;
@@ -48,8 +49,8 @@ vuint8 _mm_right1(vuint8 vecteur1, vuint8 vecteur2)
     
     return x1;
 }
-
-void erosion_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+*/
+void erosion3_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
 // --------------------------------------------------------
 {
     int i, j;
@@ -62,35 +63,82 @@ void erosion_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
     vuint8 aa2, cc2;
 
     vuint8 y;
-
+    
     // CODE A COMPLETER
     for(i = nrl; i <= nrh; i++)
     {
         for(j = ncl; j <= nch; j++)
         {
             // Initialisation 
-            a0 = vec_load2(X, i-2, j-1);
-            b0 = vec_load2(X, i-2, j+0);
-            c0 = vec_load2(X, i-2, j+1);
+            a0 = vec_load2(X, i-1, j-1);
+            b0 = vec_load2(X, i-1, j+0);
+            c0 = vec_load2(X, i-1, j+1);
 
-            a1 = vec_load2(X, i-1, j-1);
-            b1 = vec_load2(X, i-1, j+0);
-            c1 = vec_load2(X, i-1, j+1);
+            a1 = vec_load2(X, i-0, j-1);
+            b1 = vec_load2(X, i-0, j+0);
+            c1 = vec_load2(X, i-0, j+1);
 
-            a2 = vec_load2(X, i-0, j-1);
-            b2 = vec_load2(X, i-0, j+0);
-            c2 = vec_load2(X, i-0, j+1);
+            a2 = vec_load2(X, i+1, j-1);
+            b2 = vec_load2(X, i+1, j+0);
+            c2 = vec_load2(X, i+1, j+1);
         
             // Décalage a droite et à gauche
-            aa0 = _mm_left1(a0, b0); 
-            cc0 = _mm_right1(b0, c0); 
-            aa1 = _mm_left1(a1, b1); 
-            cc1 = _mm_right1(b1, c1); 
-            aa2 = _mm_left1(a2, b2); 
-            cc2 = _mm_right1(b2, c2); 
+            aa0 = vec_left1(a0, b0); 
+            cc0 = vec_right1(b0, c0); 
+            aa1 = vec_left1(a1, b1); 
+            cc1 = vec_right1(b1, c1); 
+            aa2 = vec_left1(a2, b2); 
+            cc2 = vec_right1(b2, c2); 
 
             // Moyennage
             y = vec_and3(vec_and3(aa0, b0, cc0), vec_and3(aa1, b1, cc1), vec_and3(aa2, b2, cc2));
+            vec_store2(Y, i, j, y);
+        }
+    }
+}
+
+void dilatation3_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+// --------------------------------------------------------
+{
+    int i, j;
+    vuint8 a0, b0, c0;
+    vuint8 a1, b1, c1;
+    vuint8 a2, b2, c2;
+
+    vuint8 aa0, cc0;
+    vuint8 aa1, cc1;
+    vuint8 aa2, cc2;
+
+    vuint8 y;
+    
+    // CODE A COMPLETER
+    for(i = nrl; i <= nrh; i++)
+    {
+        for(j = ncl; j <= nch; j++)
+        {
+            // Initialisation 
+            a0 = vec_load2(X, i-1, j-1);
+            b0 = vec_load2(X, i-1, j+0);
+            c0 = vec_load2(X, i-1, j+1);
+
+            a1 = vec_load2(X, i-0, j-1);
+            b1 = vec_load2(X, i-0, j+0);
+            c1 = vec_load2(X, i-0, j+1);
+
+            a2 = vec_load2(X, i+1, j-1);
+            b2 = vec_load2(X, i+1, j+0);
+            c2 = vec_load2(X, i+1, j+1);
+        
+            // Décalage a droite et à gauche
+            aa0 = vec_left1(a0, b0); 
+            cc0 = vec_right1(b0, c0); 
+            aa1 = vec_left1(a1, b1); 
+            cc1 = vec_right1(b1, c1); 
+            aa2 = vec_left1(a2, b2); 
+            cc2 = vec_right1(b2, c2); 
+
+            // Moyennage
+            y = vec_or3(vec_or3(aa0, b0, cc0), vec_or3(aa1, b1, cc1), vec_or3(aa2, b2, cc2));
             vec_store2(Y, i, j, y);
         }
     }
@@ -105,7 +153,7 @@ void copy_ui8matrix_vui8matrix_padding_binaire(uint8 **X, int i0, int i1, int j0
     uint8 *temp = (uint8*) T;
     
     for(i = i0; i <= i1 ; i++){
-        for(j = j0+1; j <= j1; j++){
+        for(j = j0; j <= j1; j++){
             _mm_store_si128(T, Y[i][j]);
             //DEBUG(display_vuint8(T[0], "%3d", "T[0]\n")); DEBUG(puts(""));
             //printf("ok i = %d, j = %d\n", i, j);
@@ -165,7 +213,7 @@ void init_uint8matrix(int chiffre, int i0, int i1, int j0, int j1, uint8 **Y)
 }
 
 //taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion	
- void dilatation_erosion_SIMD(){
+ void traitement3_SIMD(){
  	printf("Lancement de l'algorithme de dilatation SIMD\n");
 
  	int nrl, nrh, ncl, nch;
@@ -197,7 +245,7 @@ void init_uint8matrix(int chiffre, int i0, int i1, int j0, int j1, uint8 **Y)
     printf("nrlb = %d, nrhb = %d, nclb = %d, nchb = %d\n", nrlb, nrhb, nclb, nchb);
 
     //--------------copie de image_courant vers padding : 1ere ligne------------------------
-    copy_ui8matrix_vui8matrix_padding_binaire(image_courante, nrl, nrh, nclb, nchb, padding);
+    copy_ui8matrix_vui8matrix_padding_binaire(image_courante, nrlY, nrhY, nclY, nchY, padding);
 
     //DEBUG(display_vui8matrix(padding,  nrlb, nrhb, nclb, nchb, format, "padding"));
     //DEBUG(display_ui8matrix(image_courante, nrl, nrh, ncl, nch, "%d", "image_courante\n")); DEBUG(puts(""));
@@ -206,12 +254,19 @@ void init_uint8matrix(int chiffre, int i0, int i1, int j0, int j1, uint8 **Y)
     //--------------------------creation matrice Y -----------------------------
     vuint8** traitement = vui8matrix(nrlY, nrhY, nclY, nchY);
     printf("nrlY = %d, nrhY = %d, nclY = %d, nchY = %d\n", nrlY, nrhY, nclY, nchY);
+
+    //--------------------------Creation padding2 de meme taille taille que padding --------------------------------
+    vuint8** padding2 = vui8matrix(nrlb, nrhb, nclb, nchb);
+
     // ---------------------------erosion SIMD----------------------------------
-    erosion_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+    erosion3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+    dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, padding);
+    dilatation3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+    erosion3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
     //--------------- copie de traitement vers image courante ---------------------------------
     copy_vui8matrix_ui8matrix_padding_binaire(traitement, nrlY, nrhY, nclY, nchY, image_courante);
     // -------- Store de l'image ------------
-    sprintf(nom_res, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/Resultat2/image_dilatation3%03d", 1);
+    sprintf(nom_res, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/ResultatSIMD/image_dilatation3%03d", 1);
 	SavePGM_ui8matrix(image_courante, nrl, nrh, ncl, nch, nom_res);
     
     for (img_nbr; img_nbr < 200; img_nbr++){
@@ -236,16 +291,57 @@ void init_uint8matrix(int chiffre, int i0, int i1, int j0, int j1, uint8 **Y)
         traitement = vui8matrix(nrlY, nrhY, nclY, nchY);
         
         // ---------------------------erosion SIMD----------------------------------
-        erosion_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+        erosion3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+        dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, padding);
+        dilatation3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+        erosion3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
         //--------------- copie de traitement vers image courante ---------------------------------
         copy_vui8matrix_ui8matrix_padding_binaire(traitement, nrlY, nrhY, nclY, nchY, image_courante);
         // -------- Store de l'image ------------
-        sprintf(nom_res, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/Resultat2/image_dilatation3%03d", img_nbr);
+        sprintf(nom_res, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/ResultatSIMD/image_dilatation3%03d", img_nbr);
 	    SavePGM_ui8matrix(image_courante, nrl, nrh, ncl, nch, nom_res);
 		
 	}
     printf("Fin algo dilatation SIMD");
  }
+
+void test()
+{
+    // Decalage a gauche de 2
+    vuint8 v1 = _mm_setr_epi8(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+    vuint8 v2 = _mm_setr_epi8(17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32);
+    /*
+    v1 = _mm_shufflehi_epi16(v1, _MM_SHUFFLE(3, 3, 3, 3));
+    v1 = (vuint8)_mm_shuffle_pd(v1, v2, 0b01);
+    v1 = _mm_srli_si128(v1, 6);
+    v2 = _mm_slli_si128(v2, 2);
+    v1 = (vuint8)_mm_shuffle_pd(v1, v2, 0b10);*/
+    
+    //v1 = (vuint8)_mm_shuffle_pd(_mm_srli_si128((vuint8)_mm_shuffle_pd(_mm_shufflehi_epi16(v1, _MM_SHUFFLE(3, 3, 3, 3)), v2, 0b01),6),_mm_slli_si128(v2, 2), 0b10);
+
+    // Decalage a droite de 2
+    /*
+    v2 = _mm_shufflelo_epi16(v2, _MM_SHUFFLE(0, 0, 0, 0));
+    v2 = (vuint8)_mm_shuffle_pd(v1, v2, 0b01);
+    v2 = _mm_slli_si128(v2, 6);
+    v1 = _mm_srli_si128(v1, 2);
+    v2 = (vuint8)_mm_shuffle_pd(v1, v2, 0b10);*/
+    //v1 = (vuint8)_mm_shuffle_pd(_mm_srli_si128(v1, 2), _mm_slli_si128((vuint8)_mm_shuffle_pd(v1, _mm_shufflelo_epi16(v2, _MM_SHUFFLE(0, 0, 0, 0)), 0b01),6), 0b10);
+
+    
+    // Decalage a gauche de 1
+    /*
+    v1 = _mm_shufflehi_epi16(v1, _MM_SHUFFLE(3, 3, 3, 3));
+    v1 = (vuint8)_mm_shuffle_pd(v1, v2, 0b01);
+    v1 = _mm_srli_si128(v1, 7);
+    v2 = _mm_slli_si128(v2, 1);
+    v1 = (vuint8)_mm_shuffle_pd(v1, v2, 0b10);
+    v1 = (vuint8)_mm_shuffle_pd(_mm_srli_si128((vuint8)_mm_shuffle_pd(_mm_shufflehi_epi16(v1, _MM_SHUFFLE(3, 3, 3, 3)), v2, 0b01),7),_mm_slli_si128(v2, 1), 0b10);*/
+
+    // Decalage a droite de 1
+    /*v1 = (vuint8)_mm_shuffle_pd(_mm_srli_si128(v1, 1), _mm_slli_si128((vuint8)_mm_shuffle_pd(v1, _mm_shufflelo_epi16(v2, _MM_SHUFFLE(0, 0, 0, 0)), 0b01),7), 0b10);*/
+    //DEBUG(display_vuint8(vec_left2(v1,v2), "%3d", "v1\n")); DEBUG(puts(""));
+}
 
 //taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
 /* void ouverture_fermeture(int taille_kernel, int traitement){
