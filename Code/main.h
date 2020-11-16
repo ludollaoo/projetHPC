@@ -6,9 +6,7 @@
 #include "nrutil.h"
 
 #include "vnrdef.h"
-#include "vnrutils.h"
+#include "vnrutil.h"
 
 #include "SD.h"
 #include "utils.h"
-
-def type vuint8;

@@ -1,5 +1,5 @@
 CC=gcc
-CCFLAGS= -Wall -g
+CCFLAGS= -Wall -g -mssse3 -msse4
 LIBFLAGS= 
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
