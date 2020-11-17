@@ -3,8 +3,10 @@
 
 #include "../include/nrdef.h"
 #include "../include/nrutil.h"
-#include "morpho.h"
-#include "morpho_SIMD.h"
+#include "../include/morpho.h"
+#include "../include/morpho_SIMD.h"
+#include "../include/mymacro.h"
+#include "../include/mutil.h"
 #define threshold 10
 
 
@@ -213,12 +215,21 @@ void copy_ui8matrix_ui8matrix_padding(uint8 **X, int i0, int i1, int j0, int j1,
 */
 int main(void){
 	frame_difference();
+    double t0, t1, dt, tmin, t;
+    int iter, niter = 4;
+    int run, nrun = 5;
+    double cycles, cycles2;
+    char *format = "%6.2f ";
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion
-	
-	traitement3_SIMD();
-    main_morpho();
+	CHRONO(traitement3_SIMD(),cycles2); printf("SIMD   \n"); 
 
+    sleep(5);
+    CHRONO(main_morpho(), cycles);  printf("C   \n");
+
+
+
+    printf("t0 = %f ; t1 = %f\n", (cycles/(320*240)), (cycles2/(320*240)));
     //test();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
 	//ouverture_fermeture(1, 0);
