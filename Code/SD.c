@@ -1,12 +1,5 @@
 #include "main.h"
 
-#define max(a,b) (a>=b?a:b)
-#define min(a,b) (a<=b?a:b)
-#define Vmin 1
-#define Vmax 254
-#define NOIR 0
-#define BLANC 255
-
 void SD_sequentielle(int nrl, int nrh, int ncl, int nch, int nb_img_max, int N, char* path, int sauvegarde){
 	
 	//chemin des images
