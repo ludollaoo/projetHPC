@@ -5,6 +5,7 @@
 #include "../include/nrutil.h"
 #include "../include/morpho.h"
 #include "../include/morpho_SIMD.h"
+#include "../include/morpho_SIMD_opti.h"
 #include "../include/mymacro.h"
 #include "../include/mutil.h"
 #define threshold 10
@@ -222,7 +223,7 @@ int main(void){
     char *format = "%6.2f ";
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion
-	CHRONO(traitement3_SIMD(),cycles2); printf("SIMD   \n"); 
+	CHRONO(traitement3_SIMD_opti(),cycles2); printf("SIMD   \n"); 
 
     sleep(5);
     CHRONO(main_morpho(), cycles);  printf("C   \n");

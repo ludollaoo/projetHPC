@@ -11,10 +11,10 @@ extern "C" {
 #endif
 
 void erosion3_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y);
-void erosion5_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y);
-void dilatation3_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y);
-void dilatation5_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y);
-void traitement3_SIMD_opti();
+void erosion5_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+void dilatation3_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+void dilatation5_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+void traitement3_SIMD()
 #ifdef __cplusplus
 }
 #endif
