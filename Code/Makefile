@@ -1,6 +1,6 @@
 CC=gcc
-CCFLAGS= -Wall -g -mssse3 -msse4 -fopenmp
-LIBFLAGS= 
+CCFLAGS= -Wall -g 
+LIBFLAGS= -mssse3 -msse4 -fopenmp
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 TST= $(wildcard unitTest/*.c)

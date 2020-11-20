@@ -9,5 +9,7 @@ int main(void){
 	//SD_sequentielle_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
 	//SD_SIMD_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
 	//SD_SIMD_opti_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
-	SD_SIMD_opti_openMP_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
+	//SD_SIMD_opti_openMP_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
+	//resize(0, 119, 0, 159);
+	benchmark();
 }

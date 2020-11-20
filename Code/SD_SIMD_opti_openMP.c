@@ -43,7 +43,8 @@ void SD_SIMD_opti_openMP_2(int nrl, int nrh, int ncl, int nch, int nb_img_max, i
 		MLoadPGM_ui8matrix(nom, nrl, nrh, ncl, nch, image_courante);
 
 		//parcours de l'image courante
-		#pragma omp parallel for
+		omp_set_num_threads(2);
+		# pragma omp parallel for
 		for(int i = nrl; i <= nrh; i++){
 			for(int j = ncl; j <= nch; j = j + step){
 				//moyenne
