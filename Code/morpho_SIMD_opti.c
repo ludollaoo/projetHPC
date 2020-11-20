@@ -83,6 +83,191 @@ void erosion3_rot_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** 
     }
 }
 
+void erosion3_rot_LU_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+// --------------------------------------------------------
+{
+    int i, j, r;
+    vuint8 a0, b0, c0;
+    vuint8 a1, b1, c1;
+    vuint8 a2, b2, c2;
+
+    vuint8 aa0, cc0;
+    vuint8 aa1, cc1;
+    vuint8 aa2, cc2;
+
+    vuint8 ra, rb, rc;
+    vuint8 y;
+    
+    r = (nch)%3;
+    //printf(" r = %d, nrl = %d, nrh = %d, ncl = %d, nch = %d\n", r, nrl, nrh, ncl, nch);
+    // CODE A COMPLETER
+    for(i = nrl; i <= nrh; i++)
+    {
+        j=ncl;
+    // rotation de registre code scalarisé
+        a0 = vec_load2(X, i-1, j-1);
+        b0 = vec_load2(X, i-1, j+0);
+
+        a1 = vec_load2(X, i-0, j-1);
+        b1 = vec_load2(X, i-0, j+0);
+
+        a2 = vec_load2(X, i+1, j-1);
+        b2 = vec_load2(X, i+1, j+0);
+        //printf("i = %d\n",i);
+        for(j = ncl; j < (nch-r); j+=3)
+        {
+            //printf("j = %d\n",j);
+            // Initialisation 
+            c0 = vec_load2(X, i-1, j+1);
+            c1 = vec_load2(X, i-0, j+1);
+            c2 = vec_load2(X, i+1, j+1);
+
+            // Décalage a droite et à gauche
+            aa0 = vec_left1(a0, b0);
+            cc0 = vec_right1(b0, c0); 
+            aa1 = vec_left1(a1, b1); 
+            cc1 = vec_right1(b1, c1); 
+            aa2 = vec_left1(a2, b2); 
+            cc2 = vec_right1(b2, c2); 
+
+            ra = vec_and3(aa0, b0, cc0);  // operateur Colonne
+            rb = vec_and3(aa1, b1, cc1);
+            rc = vec_and3(aa2, b2, cc2);
+
+            // Moyennage
+            y = vec_and3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j, y);
+
+            //LU3
+            a0 = vec_load2(X, i-1, j+2);
+            a1 = vec_load2(X, i-0, j+2);
+            a2 = vec_load2(X, i+1, j+2);
+            //printf("OK2\n");
+            aa0 = vec_left1(b0, c0);
+            cc0 = vec_right1(c0, a0); 
+            aa1 = vec_left1(b1, c1); 
+            cc1 = vec_right1(c1, a1); 
+            aa2 = vec_left1(b2, c2); 
+            cc2 = vec_right1(c2, a2);
+
+            ra = vec_and3(aa0, c0, cc0);  // operateur Colonne
+            rb = vec_and3(aa1, c1, cc1);
+            rc = vec_and3(aa2, c2, cc2);
+
+            y = vec_and3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j+1, y);
+            //LU3
+            //printf("i = %d et j = %d\n", i, j);
+            b0 = vec_load2(X, i-1, j+3);
+            b1 = vec_load2(X, i-0, j+3);
+            b2 = vec_load2(X, i+1, j+3);
+
+            aa0 = vec_left1(c0, a0);
+            cc0 = vec_right1(a0, b0); 
+            aa1 = vec_left1(c1, a1); 
+            cc1 = vec_right1(a1, b1); 
+            aa2 = vec_left1(c2, a2); 
+            cc2 = vec_right1(a2, b2);
+
+            ra = vec_and3(aa0, a0, cc0);  // operateur Colonne
+            rb = vec_and3(aa1, a1, cc1);
+            rc = vec_and3(aa2, a2, cc2);
+
+            y = vec_and3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j+2, y); 
+
+            //printf("18 ok");
+        }
+        //printf("j = %d\n", j);
+        switch(r){
+            case 2:
+                a0 = vec_load2(X, i-1, j+1);
+                b0 = vec_load2(X, i-1, j+2);
+
+                a1 = vec_load2(X, i-0, j+1);
+                b1 = vec_load2(X, i-0, j+2);
+
+                a2 = vec_load2(X, i+1, j+1);
+                b2 = vec_load2(X, i+1, j+2);
+                c0 = vec_load2(X, i-1, j+3);
+                c1 = vec_load2(X, i-0, j+3);
+                c2 = vec_load2(X, i+1, j+3);
+
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2);
+
+                ra = vec_and3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_and3(aa1, b1, cc1);
+                rc = vec_and3(aa2, b2, cc2);
+
+                y = vec_and3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j+2, y);       
+            case 1:
+                a0 = vec_load2(X, i-1, j-0);
+                b0 = vec_load2(X, i-1, j+1);
+
+                a1 = vec_load2(X, i-0, j-0);
+                b1 = vec_load2(X, i-0, j+1);
+
+                a2 = vec_load2(X, i+1, j-0);
+                b2 = vec_load2(X, i+1, j+1);
+                c0 = vec_load2(X, i-1, j+2);
+                c1 = vec_load2(X, i-0, j+2);
+                c2 = vec_load2(X, i+1, j+2);
+                //printf("OK2\n");
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2);
+
+                ra = vec_and3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_and3(aa1, b1, cc1);
+                rc = vec_and3(aa2, b2, cc2);
+
+                y = vec_and3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j+1, y);
+            
+            case 0:
+                a0 = vec_load2(X, i-1, j-1);
+                b0 = vec_load2(X, i-1, j+0);
+
+                a1 = vec_load2(X, i-0, j-1);
+                b1 = vec_load2(X, i-0, j+0);
+
+                a2 = vec_load2(X, i+1, j-1);
+                b2 = vec_load2(X, i+1, j+0);
+                c0 = vec_load2(X, i-1, j+1);
+                c1 = vec_load2(X, i-0, j+1);
+                c2 = vec_load2(X, i+1, j+1);
+
+            // Décalage a droite et à gauche
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2); 
+
+                ra = vec_and3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_and3(aa1, b1, cc1);
+                rc = vec_and3(aa2, b2, cc2);
+
+            // Moyennage
+                y = vec_and3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j, y);
+                break;
+        }
+    }
+
+    //printf("OK\n");
+}
+
 void dilatation3_rot_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
 // --------------------------------------------------------
 {
@@ -141,7 +326,190 @@ void dilatation3_rot_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8
         }
     }
 }
+void dilatation3_rot_LU_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
+// --------------------------------------------------------
+{
+    int i, j, r;
+    vuint8 a0, b0, c0;
+    vuint8 a1, b1, c1;
+    vuint8 a2, b2, c2;
 
+    vuint8 aa0, cc0;
+    vuint8 aa1, cc1;
+    vuint8 aa2, cc2;
+
+    vuint8 ra, rb, rc;
+    vuint8 y;
+    
+    r = (nch)%3;
+    //printf(" r = %d, nrl = %d, nrh = %d, ncl = %d, nch = %d\n", r, nrl, nrh, ncl, nch);
+    // CODE A COMPLETER
+    for(i = nrl; i <= nrh; i++)
+    {
+        j=ncl;
+    // rotation de registre code scalarisé
+        a0 = vec_load2(X, i-1, j-1);
+        b0 = vec_load2(X, i-1, j+0);
+
+        a1 = vec_load2(X, i-0, j-1);
+        b1 = vec_load2(X, i-0, j+0);
+
+        a2 = vec_load2(X, i+1, j-1);
+        b2 = vec_load2(X, i+1, j+0);
+        //printf("i = %d\n",i);
+        for(j = ncl; j < (nch-r); j+=3)
+        {
+            //printf("j = %d\n",j);
+            // Initialisation 
+            c0 = vec_load2(X, i-1, j+1);
+            c1 = vec_load2(X, i-0, j+1);
+            c2 = vec_load2(X, i+1, j+1);
+
+            // Décalage a droite et à gauche
+            aa0 = vec_left1(a0, b0);
+            cc0 = vec_right1(b0, c0); 
+            aa1 = vec_left1(a1, b1); 
+            cc1 = vec_right1(b1, c1); 
+            aa2 = vec_left1(a2, b2); 
+            cc2 = vec_right1(b2, c2); 
+
+            ra = vec_or3(aa0, b0, cc0);  // operateur Colonne
+            rb = vec_or3(aa1, b1, cc1);
+            rc = vec_or3(aa2, b2, cc2);
+
+            // Moyennage
+            y = vec_or3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j, y);
+
+            //LU3
+            a0 = vec_load2(X, i-1, j+2);
+            a1 = vec_load2(X, i-0, j+2);
+            a2 = vec_load2(X, i+1, j+2);
+            //printf("OK2\n");
+            aa0 = vec_left1(b0, c0);
+            cc0 = vec_right1(c0, a0); 
+            aa1 = vec_left1(b1, c1); 
+            cc1 = vec_right1(c1, a1); 
+            aa2 = vec_left1(b2, c2); 
+            cc2 = vec_right1(c2, a2);
+
+            ra = vec_or3(aa0, c0, cc0);  // operateur Colonne
+            rb = vec_or3(aa1, c1, cc1);
+            rc = vec_or3(aa2, c2, cc2);
+
+            y = vec_or3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j+1, y);
+            //LU3
+            //printf("i = %d et j = %d\n", i, j);
+            b0 = vec_load2(X, i-1, j+3);
+            b1 = vec_load2(X, i-0, j+3);
+            b2 = vec_load2(X, i+1, j+3);
+
+            aa0 = vec_left1(c0, a0);
+            cc0 = vec_right1(a0, b0); 
+            aa1 = vec_left1(c1, a1); 
+            cc1 = vec_right1(a1, b1); 
+            aa2 = vec_left1(c2, a2); 
+            cc2 = vec_right1(a2, b2);
+
+            ra = vec_or3(aa0, a0, cc0);  // operateur Colonne
+            rb = vec_or3(aa1, a1, cc1);
+            rc = vec_or3(aa2, a2, cc2);
+
+            y = vec_or3(ra, rb, rc);  // operateur Ligne
+            vec_store2(Y, i, j+2, y); 
+
+            //printf("18 ok");
+        }
+        //printf("j = %d\n", j);
+        switch(r){
+            case 2:
+                a0 = vec_load2(X, i-1, j+1);
+                b0 = vec_load2(X, i-1, j+2);
+
+                a1 = vec_load2(X, i-0, j+1);
+                b1 = vec_load2(X, i-0, j+2);
+
+                a2 = vec_load2(X, i+1, j+1);
+                b2 = vec_load2(X, i+1, j+2);
+                c0 = vec_load2(X, i-1, j+3);
+                c1 = vec_load2(X, i-0, j+3);
+                c2 = vec_load2(X, i+1, j+3);
+
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2);
+
+                ra = vec_or3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_or3(aa1, b1, cc1);
+                rc = vec_or3(aa2, b2, cc2);
+
+                y = vec_or3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j+2, y);       
+            case 1:
+                a0 = vec_load2(X, i-1, j-0);
+                b0 = vec_load2(X, i-1, j+1);
+
+                a1 = vec_load2(X, i-0, j-0);
+                b1 = vec_load2(X, i-0, j+1);
+
+                a2 = vec_load2(X, i+1, j-0);
+                b2 = vec_load2(X, i+1, j+1);
+                c0 = vec_load2(X, i-1, j+2);
+                c1 = vec_load2(X, i-0, j+2);
+                c2 = vec_load2(X, i+1, j+2);
+                //printf("OK2\n");
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2);
+
+                ra = vec_or3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_or3(aa1, b1, cc1);
+                rc = vec_or3(aa2, b2, cc2);
+
+                y = vec_or3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j+1, y);
+            
+            case 0:
+                a0 = vec_load2(X, i-1, j-1);
+                b0 = vec_load2(X, i-1, j+0);
+
+                a1 = vec_load2(X, i-0, j-1);
+                b1 = vec_load2(X, i-0, j+0);
+
+                a2 = vec_load2(X, i+1, j-1);
+                b2 = vec_load2(X, i+1, j+0);
+                c0 = vec_load2(X, i-1, j+1);
+                c1 = vec_load2(X, i-0, j+1);
+                c2 = vec_load2(X, i+1, j+1);
+
+            // Décalage a droite et à gauche
+                aa0 = vec_left1(a0, b0);
+                cc0 = vec_right1(b0, c0); 
+                aa1 = vec_left1(a1, b1); 
+                cc1 = vec_right1(b1, c1); 
+                aa2 = vec_left1(a2, b2); 
+                cc2 = vec_right1(b2, c2); 
+
+                ra = vec_or3(aa0, b0, cc0);  // operateur Colonne
+                rb = vec_or3(aa1, b1, cc1);
+                rc = vec_or3(aa2, b2, cc2);
+
+            // Moyennage
+                y = vec_or3(ra, rb, rc);  // operateur Ligne
+                vec_store2(Y, i, j, y);
+                break;
+        }
+    }
+
+    //printf("OK\n");
+}
 void dilatation_erosion3_pipeline_rot_simd(vuint8** X, int nrl, int nrh, int ncl, int nch, vuint8** Y)
 // --------------------------------------------------------
 {
@@ -362,7 +730,7 @@ void traitement3_SIMD_opti(){
     // ----------------------Initialisation à zero------------------------------------
 	//zero_vui8matrix(padding,  nrlb, nrhb, nclb, nchb);
     //printf("nrl = %d, nrh = %d, ncl = %d, nch = %d\n", nrl, nrh, ncl, nch);
-    //printf("nrlb = %d, nrhb = %d, nclb = %d, nchb = %d\n", nrlb, nrhb, nclb, nchb);
+    printf("nrlb = %d, nrhb = %d, nclb = %d, nchb = %d\n", nrlb, nrhb, nclb, nchb);
 
     //--------------copie de image_courant vers padding : 1ere ligne------------------------
     copy_ui8matrix_vui8matrix_padding_binaire(image_courante, nrlY, nrhY, nclY, nchY, padding);
@@ -379,7 +747,12 @@ void traitement3_SIMD_opti(){
     //vuint8** padding2 = vui8matrix(nrlb, nrhb, nclb, nchb);
 
     // ---------------------------erosion SIMD----------------------------------
-    dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+    //dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+    //printf("Debuuuut\n"); sleep(5);
+    erosion3_rot_LU_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+    //printf("OOOOOOOOOOOOOOOOOOK\n");
+    //DEBUG(display_vui8matrix(traitement, nrlY, nrhY, nclY, nchY, "%d", "erosion LU")); DEBUG(puts(""));
+    //printf("OOOOOOOOOOOOOOOOOOK2\n");
 
     //--------------- copie de traitement vers image courante ---------------------------------
     copy_vui8matrix_ui8matrix_padding_binaire(traitement, nrlY, nrhY, nclY, nchY, image_courante);
@@ -390,14 +763,14 @@ void traitement3_SIMD_opti(){
     for (img_nbr; img_nbr < 200; img_nbr++){
 
 		//Chargement d'une image après traitement par SD
-		sprintf(nom_img, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/Resultat/image_test3%03d", img_nbr);
-		image_courante = LoadPGM_ui8matrix( nom_img, &nrl, &nrh, &ncl, &nch);
+	sprintf(nom_img, "/home/jebali/Bureau/EISE5/HPC/ProjetHPC/projetHPC/Resultat/image_test3%03d", img_nbr);
+	image_courante = LoadPGM_ui8matrix( nom_img, &nrl, &nrh, &ncl, &nch);
 
         //-------------------calcul parametre pour matrice de format vuint8** ---------------------------
         s2v(nrl-b, nrh+b, ncl-b, nch+b, card, &nrlb, &nrhb, &nclb, &nchb);
         s2v(nrl, nrh, ncl, nch, card, &nrlY, &nrhY, &nclY, &nchY);
         //----------------------Déclaration matrice SIMD -------------------------------
-	    padding = vui8matrix(nrlb, nrhb, nclb, nchb);
+	padding = vui8matrix(nrlb, nrhb, nclb, nchb);
 
         // ----------------------Initialisation à zero------------------------------------
 	    //zero_vui8matrix(padding,  nrlb, nrhb, nclb, nchb);
@@ -407,9 +780,10 @@ void traitement3_SIMD_opti(){
 
         //--------------------------creation matrice Y -----------------------------
         traitement = vui8matrix(nrlY, nrhY, nclY, nchY);
-        
+        DEBUG(display_vui8matrix(traitement, nrlY, nrhY, nclY, nchY, "%d", "erosion LU")); DEBUG(puts(""));
         // ---------------------------erosion SIMD----------------------------------
-        dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+        //dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
+        erosion3_rot_LU_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
         //--------------- copie de traitement vers image courante ---------------------------------
         copy_vui8matrix_ui8matrix_padding_binaire(traitement, nrlY, nrhY, nclY, nchY, image_courante);
         // -------- Store de l'image ------------

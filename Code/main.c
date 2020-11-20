@@ -219,18 +219,22 @@ int main(void){
     double t0, t1, dt, tmin, t;
     int iter, niter = 4;
     int run, nrun = 5;
-    double cycles, cycles2;
+    double cycles, cycles2, cycles3;
     char *format = "%6.2f ";
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion
-	CHRONO(traitement3_SIMD_opti(),cycles2); printf("SIMD   \n"); 
+	//CHRONO(traitement3_SIMD_opti(),cycles2); printf("SIMD opti   \n");
+    traitement3_SIMD_opti();
+    //traitement3_SIMD();
+    main_morpho();
+    //sleep(5);
+    //CHRONO(traitement3_SIMD(),cycles3); printf("SIMD   \n"); 
+    //sleep(5);
+    //CHRONO(main_morpho(), cycles);  printf("C   \n");
 
-    sleep(5);
-    CHRONO(main_morpho(), cycles);  printf("C   \n");
 
 
-
-    printf("t0 = %f ; t1 = %f\n", (cycles/(320*240)), (cycles2/(320*240)));
+    //printf("cycles = %f ; cycles2 = %f, cycle3 = %f\n ", (cycles/(320*240)), (cycles2/(320*240)), (cycles3/(320*240)));
     //test();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
 	//ouverture_fermeture(1, 0);

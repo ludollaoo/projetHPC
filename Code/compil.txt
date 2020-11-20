@@ -1,0 +1,1029 @@
+In file included from morpho_SIMD_opti.c:14:0:
+../include/mymacro.h:20:9: note: #pragma message: ENABLE_BENCHMARK is ON
+ #pragma message("ENABLE_BENCHMARK is ON")
+         ^~~~~~~
+../include/mymacro.h:31:9: note: #pragma message: gcc compiler ...
+ #pragma message("gcc compiler ...")
+         ^~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+morpho_SIMD_opti.c: In function ‘erosion3_rot_simd’:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:41:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(X, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:42:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(X, i-1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:44:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(X, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:45:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(X, i-0, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:47:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(X, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:48:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(X, i+1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:53:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(X, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:54:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(X, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:55:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(X, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:71:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+morpho_SIMD_opti.c: In function ‘erosion3_rot_LU_simd’:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:108:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(X, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:109:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(X, i-1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:111:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(X, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:112:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(X, i-0, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:114:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(X, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:115:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(X, i+1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:121:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(X, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:122:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(X, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:123:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(X, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:139:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:142:18: note: in expansion of macro ‘vec_load2’
+             a0 = vec_load2(X, i-1, j+2);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:143:18: note: in expansion of macro ‘vec_load2’
+             a1 = vec_load2(X, i-0, j+2);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:144:18: note: in expansion of macro ‘vec_load2’
+             a2 = vec_load2(X, i+1, j+2);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:158:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j+1, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:161:18: note: in expansion of macro ‘vec_load2’
+             b0 = vec_load2(X, i-1, j+3);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:162:18: note: in expansion of macro ‘vec_load2’
+             b1 = vec_load2(X, i-0, j+3);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:163:18: note: in expansion of macro ‘vec_load2’
+             b2 = vec_load2(X, i+1, j+3);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:173:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j+2, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+morpho_SIMD_opti.c: In function ‘dilatation3_rot_simd’:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:201:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(X, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:202:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(X, i-1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:204:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(X, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:205:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(X, i-0, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:207:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(X, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:208:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(X, i+1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:213:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(X, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:214:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(X, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:215:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(X, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:227:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+morpho_SIMD_opti.c: In function ‘dilatation_erosion3_pipeline_rot_simd’:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:267:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(X, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:268:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(X, i-1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:270:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(X, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:271:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(X, i-0, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:273:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(X, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:274:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(X, i+1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:279:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(X, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:280:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(X, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:281:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(X, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:293:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(padding2, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:310:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(X, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:311:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(X, i-1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:313:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(X, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:314:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(X, i-0, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:316:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(X, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:317:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(X, i+1, j+0);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:319:15: note: in expansion of macro ‘vec_load2’
+         b02 = vec_load2(padding2, i-3, j);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:320:15: note: in expansion of macro ‘vec_load2’
+         b12 = vec_load2(padding2, i-2, j);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:321:15: note: in expansion of macro ‘vec_load2’
+         b22 = vec_load2(padding2, i-1, j);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:323:15: note: in expansion of macro ‘vec_load2’
+         a02 = vec_load2(padding2, i-3, j-1);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:324:15: note: in expansion of macro ‘vec_load2’
+         a12 = vec_load2(padding2, i-2, j-1);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:325:15: note: in expansion of macro ‘vec_load2’
+         a22 = vec_load2(padding2, i-1, j-1);
+               ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:331:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(X, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:332:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(X, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:333:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(X, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:349:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(padding2, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:351:19: note: in expansion of macro ‘vec_load2’
+             c02 = vec_load2(padding2, i-3, j+1);
+                   ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:352:19: note: in expansion of macro ‘vec_load2’
+             c12 = vec_load2(padding2, i-2, j+1);
+                   ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:353:19: note: in expansion of macro ‘vec_load2’
+             c22 = vec_load2(padding2, i-1, j+1);
+                   ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:368:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i-2, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:390:14: note: in expansion of macro ‘vec_load2’
+         b0 = vec_load2(padding2, i-1, j);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:391:14: note: in expansion of macro ‘vec_load2’
+         b1 = vec_load2(padding2, i-0, j);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:392:14: note: in expansion of macro ‘vec_load2’
+         b2 = vec_load2(padding2, i+1, j);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:394:14: note: in expansion of macro ‘vec_load2’
+         a0 = vec_load2(padding2, i-1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:395:14: note: in expansion of macro ‘vec_load2’
+         a1 = vec_load2(padding2, i-0, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:396:14: note: in expansion of macro ‘vec_load2’
+         a2 = vec_load2(padding2, i+1, j-1);
+              ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:400:18: note: in expansion of macro ‘vec_load2’
+             c0 = vec_load2(padding2, i-1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:401:18: note: in expansion of macro ‘vec_load2’
+             c1 = vec_load2(padding2, i-0, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:13:43: warning: passing argument 1 of ‘_mm_load_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_load2(T, i, j) _mm_load_si128((uint8*) &T[i][j])
+                                           ^
+morpho_SIMD_opti.c:402:18: note: in expansion of macro ‘vec_load2’
+             c2 = vec_load2(padding2, i+1, j+1);
+                  ^~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:695:1: note: expected ‘const __vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_load_si128 (__m128i const *__P)
+ ^~~~~~~~~~~~~~
+In file included from morpho_SIMD_opti.c:15:0:
+../include/simd_macro.h:14:48: warning: passing argument 1 of ‘_mm_store_si128’ from incompatible pointer type [-Wincompatible-pointer-types]
+ #define vec_store2(T, i, j, x) _mm_store_si128((uint8*) &T[i][j], x)
+                                                ^
+morpho_SIMD_opti.c:417:13: note: in expansion of macro ‘vec_store2’
+             vec_store2(Y, i, j, y);
+             ^~~~~~~~~~
+In file included from /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h:1252:0,
+                 from ../include/vnrdef.h:34,
+                 from morpho_SIMD_opti.c:8:
+/usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h:713:1: note: expected ‘__vector(2) long long int *’ but argument is of type ‘uint8 * {aka unsigned char *}’
+ _mm_store_si128 (__m128i *__P, __m128i __B)
+ ^~~~~~~~~~~~~~~
+morpho_SIMD_opti.c: In function ‘traitement3_SIMD_opti’:
+morpho_SIMD_opti.c:479:27: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+     printf("Debuuuut\n"); sleep(5);
+                           ^~~~~
