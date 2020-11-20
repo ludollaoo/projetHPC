@@ -293,8 +293,8 @@ void traitement3_SIMD(){
 
     // ---------------------------erosion SIMD----------------------------------
 
-    erosion3_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
-    //dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, padding);
+    erosion3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+    dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
     //dilatation3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
     //erosion3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
     //--------------- copie de traitement vers image courante ---------------------------------
@@ -322,8 +322,8 @@ void traitement3_SIMD(){
         traitement = vui8matrix(nrlY, nrhY, nclY, nchY);
         
         // ---------------------------erosion SIMD----------------------------------
-        erosion3_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
-        //dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, padding);
+        erosion3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+        dilatation3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
         //dilatation3_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
         //erosion3_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
         //--------------- copie de traitement vers image courante ---------------------------------
@@ -337,7 +337,7 @@ void traitement3_SIMD(){
     free_vui8matrix(padding2, nrlb, nrhb, nclb, nchb);
     free_vui8matrix(traitement, nrlY, nrhY, nclY, nchY);
     free_ui8matrix(image_courante, nrl, nrh, ncl, nch);
-    printf("Fin algo dilatation SIMD");
+    printf("Fin algo dilatation SIMD\n");
  }
  
 

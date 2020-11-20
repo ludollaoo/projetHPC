@@ -174,9 +174,9 @@ void main_morpho(){
 	//frame_difference();
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion	
-	dilatation_erosion(1, 0);
+	//dilatation_erosion(1, 0);
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
-	//ouverture_fermeture(1, 0);
+	ouverture_fermeture(1, 0);
 }
 
 

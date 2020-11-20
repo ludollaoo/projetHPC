@@ -223,23 +223,17 @@ int main(void){
     char *format = "%6.2f ";
 	//padding();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour dilatation et 0  pour erosion
-	//CHRONO(traitement3_SIMD_opti(),cycles2); printf("SIMD opti   \n");
-    traitement3_SIMD_opti();
+    CHRONO(traitement3_SIMD(),cycles3); printf("SIMD   \n"); 
+    //sleep(5);
+	CHRONO(traitement3_SIMD_opti(),cycles2); printf("SIMD opti   \n");
+    //sleep(5);
+    CHRONO(main_morpho(), cycles);  printf("C   \n");
+    //traitement3_SIMD_opti();
     //traitement3_SIMD();
-    main_morpho();
-    //sleep(5);
-    //CHRONO(traitement3_SIMD(),cycles3); printf("SIMD   \n"); 
-    //sleep(5);
-    //CHRONO(main_morpho(), cycles);  printf("C   \n");
+    //main_morpho();
 
-
-
-    //printf("cycles = %f ; cycles2 = %f, cycle3 = %f\n ", (cycles/(320*240)), (cycles2/(320*240)), (cycles3/(320*240)));
+    printf("cycles = %f ; cycles2 = %f, cycle3 = %f\n ", (cycles/(320*240)), (cycles2/(320*240)), (cycles3/(320*240)));
     //test();
 	//taille kernel: 1 pour kernel 3x3, 2 pour 5x5 et traitement: 255 pour fermeture et 0  pour ouverture	
 	//ouverture_fermeture(1, 0);
 }
-
-	// exemple de fonction pour ouverture et fermeture, attention au chemin
-	//uint8** image = LoadPGM_ui8matrix("/home/ludovic/HPC/Projet/car3/car_3000.pgm", &nrl, &nrh, &ncl, &nch);
-	//SavePGM_ui8matrix(image, nrl, nrh, ncl, nch,"/home/ludovic/HPC/Projet/Code/image_test");
