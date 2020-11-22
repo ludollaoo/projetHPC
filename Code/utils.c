@@ -1,4 +1,4 @@
-#include "main.h"
+#include "../include/main.h"
 
 void get_path(int numero_image, char* nom, char* path, char* complement){
 	if(complement == NULL){
@@ -18,7 +18,7 @@ void resize(int nrl, int nrh, int ncl, int nch){
 
 	for(int n_img = 0; n_img < 200; n_img++){
 		
-		get_path(n_img, nom, "/home/ludovic/HPC/Projet/car3/car_3", NULL);
+		get_path(n_img, nom, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/car_3", NULL);
 		MLoadPGM_ui8matrix(nom, nrl, nrh, ncl, nch, image_courante);
 		
 		for(int i = nrl; i <= nrh; i++){
@@ -27,7 +27,7 @@ void resize(int nrl, int nrh, int ncl, int nch){
 			}
 		}
 
-		sprintf(nom, "/home/ludovic/HPC/Projet/car3/resized_car_3%03d.pgm", n_img);
+		sprintf(nom, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3%03d.pgm", n_img);
 		SavePGM_ui8matrix(image_resized, nrl, nrh, ncl, nch, nom);
 	}
 }

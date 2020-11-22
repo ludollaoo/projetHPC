@@ -14,9 +14,9 @@
 #include <emmintrin.h>
 #include <mmintrin.h>
 
-#include "nrdef.h"
-#include "vnrdef.h"
-#include "vnrutil.h"
+#include "../include/nrdef.h"
+#include "../include/vnrdef.h"
+#include "../include/vnrutil.h"
 
 #define LINEAR_ALLOCATION
 /* -------------------------- */

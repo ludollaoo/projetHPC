@@ -1,11 +1,14 @@
-#include "main.h"
+#include "../include/main.h"
 
 void chrono(int nrl, int nrh, int ncl, int nch){
 
 	double temps_exec;
 
 	clock_t begin = clock();
-	SD_SIMD_opti_openMP_2(nrl, nrh, ncl, nch, 200, 4, "/home/ludovic/HPC/Projet/car3/resized_car_3");
+	SD_SIMD_opti_openMP_2(nrl, nrh, ncl, nch, 200, 4, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3");
+    //traitement_sequentielle(1, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_Sequentielle/resized_car_3");
+    //traitement3_SIMD_opti("/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_SIMD_opti/resized_car_3");
+    //traitement3_SIMD("/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_SIMD/resized_car_3");
 	clock_t end = clock();
 
 	temps_exec = (double)(end - begin) / CLOCKS_PER_SEC;

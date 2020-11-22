@@ -19,6 +19,15 @@
 #include "utils.h"
 #include "benchmark.h"
 
+// Pour morpho
+//#include "mutils.h"
+#include "mymacro.h"
+#include "simd_macro.h"
+#include "projet_util.h"
+#include "morpho.h"
+#include "morpho_SIMD.h"
+#include "morpho_SIMD_opti.h"
+
 #define max(a,b) (a>=b?a:b)
 #define min(a,b) (a<=b?a:b)
 #define Vmin 1
