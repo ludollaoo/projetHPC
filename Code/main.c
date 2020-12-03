@@ -12,4 +12,8 @@ int main(void){
 	//SD_SIMD_opti_openMP_2(0, 239, 0, 319, 200, 4, "/home/ludovic/HPC/Projet/car3/car_3");
 	//resize(0, 119, 0, 159);
 	benchmark();
+    //test2D_sequentiel();
+    //test2D_SIMD();
+
+    return 0;
 }

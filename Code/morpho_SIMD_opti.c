@@ -2051,9 +2051,10 @@ void traitement3_SIMD_opti(char* path_load, char* path_save){
     // ---------------------------erosion SIMD----------------------------------
     //dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
     //printf("Debuuuut\n"); sleep(5);
+    erosion3_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
     //erosion3_rot_LU_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
-    erosion_dilatation3_pipeline_LU_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
-    dilatation_erosion3_pipeline_LU_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
+    //erosion_dilatation3_pipeline_LU_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+    //dilatation_erosion3_pipeline_LU_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
     //printf("OOOOOOOOOOOOOOOOOOK\n");
     //DEBUG(display_vui8matrix(traitement, nrlY, nrhY, nclY, nchY, "%d", "erosion LU")); DEBUG(puts(""));
     //printf("OOOOOOOOOOOOOOOOOOK2\n");
@@ -2086,10 +2087,11 @@ void traitement3_SIMD_opti(char* path_load, char* path_save){
         traitement = vui8matrix(nrlY, nrhY, nclY, nchY);
         //DEBUG(display_vui8matrix(traitement, nrlY, nrhY, nclY, nchY, "%d", "erosion LU")); DEBUG(puts(""));
         // ---------------------------erosion SIMD----------------------------------
+        erosion3_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
         //dilatation_erosion3_pipeline_rot_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
         //erosion3_rot_LU_simd(padding, nrlY, nrhY, nclY, nchY, traitement);
-        erosion_dilatation3_pipeline_LU_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
-        dilatation_erosion3_pipeline_LU_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
+        //erosion_dilatation3_pipeline_LU_simd(padding, nrlY, nrhY, nclY, nchY, padding2);
+        //dilatation_erosion3_pipeline_LU_simd(padding2, nrlY, nrhY, nclY, nchY, traitement);
         //--------------- copie de traitement vers image courante ---------------------------------
         copy_vui8matrix_ui8matrix_padding_binaire(traitement, nrlY, nrhY, nclY, nchY, image_courante);
         // -------- Store de l'image ------------

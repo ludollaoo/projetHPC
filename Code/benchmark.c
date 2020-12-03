@@ -4,11 +4,13 @@ void chrono(int nrl, int nrh, int ncl, int nch){
 
 	double temps_exec;
 
-	clock_t begin = clock();
+	
 	SD_SIMD_opti_openMP_2(nrl, nrh, ncl, nch, 200, 4, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3");
-    //traitement_sequentielle(1, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_Sequentielle/resized_car_3");
+    clock_t begin = clock();
+    traitement_sequentielle(1, "/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_Sequentielle/resized_car_3");
     //traitement3_SIMD_opti("/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_SIMD_opti/resized_car_3");
     //traitement3_SIMD("/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_SIMD/resized_car_3");
+    //traitement3_SIMD_opti_openMP("/home/jebali/Bureau/EISE5/HPC/projetHPC/car3/resized_car_3", "/home/jebali/Bureau/EISE5/HPC/projetHPC/Resultat_SIMD_opti/resized_car_3");
 	clock_t end = clock();
 
 	temps_exec = (double)(end - begin) / CLOCKS_PER_SEC;
@@ -16,11 +18,12 @@ void chrono(int nrl, int nrh, int ncl, int nch){
 }
 
 void benchmark(void){
-	int nrl = 0;
-	int nrh = 240;
+    int k = 1;	
+    int nrl = 0;
+	int nrh = 240*k;
 	int ncl = 0;
-	int nch = 320;
-	for(int i = 0; i < 6; i++){
+	int nch = 320*k;
+	for(int i = 0; i < 1; i++){
 		printf("images de tailles: %d %d\n", nrh, nch);
 		resize(nrl, nrh-1, ncl, nch-1);
 		chrono(nrl, nrh-1, ncl, nch-1);

@@ -10,6 +10,9 @@
 #include "vnrutil.h"
 
 #include "omp.h"
+#include "test_sequentielle.h"
+#include "test_SIMD.h"
+
 
 #include "SD.h"
 #include "SD_sequentielle.h"
@@ -27,6 +30,9 @@
 #include "morpho.h"
 #include "morpho_SIMD.h"
 #include "morpho_SIMD_opti.h"
+#include "morpho_SIMD_opti_openMP.h"
+
+
 
 #define max(a,b) (a>=b?a:b)
 #define min(a,b) (a<=b?a:b)

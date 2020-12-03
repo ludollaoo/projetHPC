@@ -1769,10 +1769,10 @@ void init_vui8matrix(vuint8 **m, int i0, int i1, int j0, int j1)
 {
     int i, j;
     //vuint8 x, x0 = (vuint8) (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
-    vuint8 x, x0 = init_vuint8_param(1, 1);
+    vuint8 x, x0 = init_vuint8_param(1, 0);
     //vuint8 xstep = (vuint8) (16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16);
-    vuint8 xstep = init_vuint8(16);
-    vuint8 ystep = init_vuint8(10);
+    vuint8 xstep = init_vuint8(0);
+    vuint8 ystep = init_vuint8(0);
     
     for(i=i0; i<=i1; i++) {
         x = x0;

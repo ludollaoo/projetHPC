@@ -83,7 +83,7 @@ void init_uint8matrix(int chiffre, int i0, int i1, int j0, int j1, uint8 **Y)
 
     for(i=i0; i<=i1; i++) {
         for(j=j0; j<=j1; j++) {
-            Y[i][j] = 1;
+            Y[i][j] = chiffre;
         }
     }
 }
